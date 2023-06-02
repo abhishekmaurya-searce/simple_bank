@@ -42,6 +42,7 @@ jobs:
     - name: Install Golang Migrate
       run: 
           sudo apt-get install build-essential procps curl file git
+          brew -v
           brew install golang-migrate
           which migrate
 
