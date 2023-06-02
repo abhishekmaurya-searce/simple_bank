@@ -40,12 +40,9 @@ jobs:
     - name: Check out code into the go module directry
       uses: actions/checkout@v2
     - name: Install Golang Migrate
-      run: 
-          sudo apt-get install build-essential procps curl file git
-          brew -v
-          brew install golang-migrate
-          which migrate
-          where migrate
+      run: curl -L https://github.com/golang-migrate/migrate/releases/download/v4.16.0/migrate.linux-amd64.tar.gz | tar xvz
+      run: sudo mv migrate.linux-amd64 /usr/bin/migrate
+      run: which migrate
 
     - name: Run Migration
       run: make migrateup
