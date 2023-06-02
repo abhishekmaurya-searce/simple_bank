@@ -10,13 +10,11 @@ import (
 )
 
 func CreateRandomTransaction(t *testing.T) Transactions {
-	accounts, _ := TestQuaries.ListAccounts(context.TODO(), ListAccountsParams{
-		Offset: int32(util.RandomInt(0, 100)),
-		Limit:  2,
-	})
+	account1 := CreateRandomAccount(t)
+	account2 := CreateRandomAccount(t)
 	args := CreateTransactionsParams{
-		ToAccount:   accounts[0].ID,
-		FromAccount: accounts[1].ID,
+		ToAccount:   account1.ID,
+		FromAccount: account2.ID,
 		Amount:      util.RandomMoney(),
 	}
 	transaction, err := TestQuaries.CreateTransactions(context.TODO(), args)
