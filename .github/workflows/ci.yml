@@ -43,6 +43,8 @@ jobs:
       run: pwd
     - name: Downloading golang-migrate and extracting
       run: curl -L https://github.com/golang-migrate/migrate/releases/download/v4.16.0/migrate.linux-amd64.tar.gz | tar xvz
+    - name: list current directry
+      run: ls
     - name: moving to usr/bin folder
       run: sudo mv /home/runner/work/simple_bank/simple_bank/migrate.linux-amd64 /usr/bin/migrate
     - name: Checking migrate is installed
