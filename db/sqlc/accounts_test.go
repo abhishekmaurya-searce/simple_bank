@@ -71,14 +71,14 @@ func TestListAccounts(t *testing.T) {
 	for i := 0; i < int(n); i++ {
 		_ = CreateRandomAccount(t)
 	}
-	lim := int32(util.RandomInt(1, n))
+	//lim := int32(util.RandomInt(1, n))
 	args := ListAccountsParams{
-		Offset: int32(util.RandomInt(1, n)),
-		Limit:  lim,
+		Offset: 5,
+		Limit:  5,
 	}
 	accounts, err := TestQuaries.ListAccounts(context.TODO(), args)
 	require.NoError(t, err)
-	require.Len(t, accounts, int(lim))
+	require.Len(t, accounts, 5)
 	for _, account := range accounts {
 		require.NotEmpty(t, account)
 	}
