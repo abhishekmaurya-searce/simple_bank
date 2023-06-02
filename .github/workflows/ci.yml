@@ -14,6 +14,18 @@ jobs:
   test:
     name: test
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:15-alpine
+        env:
+          POSTGRES_PASSWORD: secret
+          POSTGRES_USER: root
+          POSTGRES_DB: simple_bank
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
     steps:
     - uses: actions/checkout@v3
 
@@ -23,7 +35,10 @@ jobs:
         go-version: 1.19
       id: go
     - name: Check out code into the go module directry
-      usue: actions/checkout@v3
+      uses: actions/checkout@v3
+    
+    - name: Run Migration
+      uses: make migrateup
 
     - name: Test
       run: make test
