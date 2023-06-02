@@ -39,10 +39,10 @@ jobs:
       id: go
     - name: Check out code into the go module directry
       uses: actions/checkout@v2
+    - name: Current working directry
+      run: pwd
     - name: Downloading golang-migrate and extracting
-      run:
-        pwd 
-        curl -L https://github.com/golang-migrate/migrate/releases/download/v4.16.0/migrate.linux-amd64.tar.gz | tar xvz
+      run: curl -L https://github.com/golang-migrate/migrate/releases/download/v4.16.0/migrate.linux-amd64.tar.gz | tar xvz
     - name: moving to usr/bin folder
       run: sudo mv migrate.linux-amd64 /usr/bin/migrate
     - name: Checking migrate is installed
