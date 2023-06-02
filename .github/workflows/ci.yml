@@ -45,6 +45,7 @@ jobs:
           brew -v
           brew install golang-migrate
           which migrate
+          where migrate
 
     - name: Run Migration
       run: make migrateup
