@@ -46,7 +46,7 @@ jobs:
     - name: list current directry
       run: ls
     - name: moving to usr/bin folder
-      run: sudo mv /home/runner/work/simple_bank/simple_bank/migrate.linux-amd64 /usr/bin/migrate
+      run: sudo mv /home/runner/work/simple_bank/simple_bank/migrate /usr/bin/migrate
     - name: Checking migrate is installed
       run: which migrate
 
