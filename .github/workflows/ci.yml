@@ -44,7 +44,7 @@ jobs:
     - name: Downloading golang-migrate and extracting
       run: curl -L https://github.com/golang-migrate/migrate/releases/download/v4.16.0/migrate.linux-amd64.tar.gz | tar xvz
     - name: moving to usr/bin folder
-      run: sudo mv migrate.linux-amd64 /usr/bin/migrate
+      run: sudo mv /home/runner/work/simple_bank/simple_bank/migrate.linux-amd64 /usr/bin/migrate
     - name: Checking migrate is installed
       run: which migrate
 
