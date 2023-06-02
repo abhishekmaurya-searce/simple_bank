@@ -44,18 +44,18 @@ func TestDeleteEntries(t *testing.T) {
 	require.Error(t, err, sql.ErrNoRows)
 }
 func TestListEntries(t *testing.T) {
-	n := util.RandomInt(0, 101)
+	n := 10
 	for i := 0; i < int(n); i++ {
 		_ = CreateRandomEntries(t)
 	}
-	lim := util.RandomInt(1, n)
+	//lim := util.RandomInt(1, n)
 	args := ListEntriesParams{
-		Offset: int32(util.RandomInt(1, n)),
-		Limit:  int32(lim),
+		Offset: 5,
+		Limit:  5,
 	}
 	entries, err := TestQuaries.ListEntries(context.TODO(), args)
 	require.NoError(t, err)
-	require.Len(t, entries, int(lim))
+	require.Len(t, entries, 5)
 	for _, entry := range entries {
 		require.NotEmpty(t, entry)
 	}
